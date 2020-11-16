@@ -3,21 +3,21 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		631CC9527E24D19220DD0072 /* Pods_Clock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E821F4760845600F6C8FD05B /* Pods_Clock.framework */; };
 		8116C3D82560B4F9003D6706 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8116C3D72560B4F9003D6706 /* AppDelegate.swift */; };
 		8116C3DA2560B4F9003D6706 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8116C3D92560B4F9003D6706 /* SceneDelegate.swift */; };
-		8116C3DC2560B4F9003D6706 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8116C3DB2560B4F9003D6706 /* ViewController.swift */; };
+		8116C3DC2560B4F9003D6706 /* CityTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8116C3DB2560B4F9003D6706 /* CityTimeViewController.swift */; };
 		8116C3DF2560B4F9003D6706 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8116C3DD2560B4F9003D6706 /* Main.storyboard */; };
 		8116C3E12560B4FA003D6706 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8116C3E02560B4FA003D6706 /* Assets.xcassets */; };
 		8116C3E42560B4FA003D6706 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8116C3E22560B4FA003D6706 /* LaunchScreen.storyboard */; };
 		8116C3EF2560B4FA003D6706 /* ClockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8116C3EE2560B4FA003D6706 /* ClockTests.swift */; };
 		8116C3FA2560B4FA003D6706 /* ClockUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8116C3F92560B4FA003D6706 /* ClockUITests.swift */; };
 		8116C4142560C089003D6706 /* CityTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8116C4132560C089003D6706 /* CityTimeTableViewCell.swift */; };
-		8116C4192560C452003D6706 /* CityTimeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8116C4182560C452003D6706 /* CityTimeTableView.swift */; };
+		8116C44725623DF4003D6706 /* CityTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8116C44625623DF4003D6706 /* CityTimeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +41,7 @@
 		8116C3D42560B4F9003D6706 /* Clock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8116C3D72560B4F9003D6706 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8116C3D92560B4F9003D6706 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8116C3DB2560B4F9003D6706 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8116C3DB2560B4F9003D6706 /* CityTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTimeViewController.swift; sourceTree = "<group>"; };
 		8116C3DE2560B4F9003D6706 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8116C3E02560B4FA003D6706 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8116C3E32560B4FA003D6706 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -53,7 +53,7 @@
 		8116C3F92560B4FA003D6706 /* ClockUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockUITests.swift; sourceTree = "<group>"; };
 		8116C3FB2560B4FA003D6706 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8116C4132560C089003D6706 /* CityTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTimeTableViewCell.swift; sourceTree = "<group>"; };
-		8116C4182560C452003D6706 /* CityTimeTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTimeTableView.swift; sourceTree = "<group>"; };
+		8116C44625623DF4003D6706 /* CityTimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTimeViewModel.swift; sourceTree = "<group>"; };
 		E821F4760845600F6C8FD05B /* Pods_Clock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Clock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCCBBC7FFD60111C3C265177 /* Pods-Clock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clock.debug.xcconfig"; path = "Target Support Files/Pods-Clock/Pods-Clock.debug.xcconfig"; sourceTree = "<group>"; };
 		FE63C5C4D12A19A432A4C310 /* Pods-Clock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clock.release.xcconfig"; path = "Target Support Files/Pods-Clock/Pods-Clock.release.xcconfig"; sourceTree = "<group>"; };
@@ -91,7 +91,6 @@
 				FCCBBC7FFD60111C3C265177 /* Pods-Clock.debug.xcconfig */,
 				FE63C5C4D12A19A432A4C310 /* Pods-Clock.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -120,15 +119,13 @@
 		8116C3D62560B4F9003D6706 /* Clock */ = {
 			isa = PBXGroup;
 			children = (
+				8116C44225623D65003D6706 /* CityTime */,
 				8116C3D72560B4F9003D6706 /* AppDelegate.swift */,
 				8116C3D92560B4F9003D6706 /* SceneDelegate.swift */,
-				8116C3DB2560B4F9003D6706 /* ViewController.swift */,
 				8116C3DD2560B4F9003D6706 /* Main.storyboard */,
 				8116C3E02560B4FA003D6706 /* Assets.xcassets */,
 				8116C3E22560B4FA003D6706 /* LaunchScreen.storyboard */,
 				8116C3E52560B4FA003D6706 /* Info.plist */,
-				8116C4132560C089003D6706 /* CityTimeTableViewCell.swift */,
-				8116C4182560C452003D6706 /* CityTimeTableView.swift */,
 			);
 			path = Clock;
 			sourceTree = "<group>";
@@ -149,6 +146,16 @@
 				8116C3FB2560B4FA003D6706 /* Info.plist */,
 			);
 			path = ClockUITests;
+			sourceTree = "<group>";
+		};
+		8116C44225623D65003D6706 /* CityTime */ = {
+			isa = PBXGroup;
+			children = (
+				8116C3DB2560B4F9003D6706 /* CityTimeViewController.swift */,
+				8116C4132560C089003D6706 /* CityTimeTableViewCell.swift */,
+				8116C44625623DF4003D6706 /* CityTimeViewModel.swift */,
+			);
+			path = CityTime;
 			sourceTree = "<group>";
 		};
 		9758FD37390E48D67B315C18 /* Frameworks */ = {
@@ -333,9 +340,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8116C3DC2560B4F9003D6706 /* ViewController.swift in Sources */,
+				8116C3DC2560B4F9003D6706 /* CityTimeViewController.swift in Sources */,
 				8116C4142560C089003D6706 /* CityTimeTableViewCell.swift in Sources */,
-				8116C4192560C452003D6706 /* CityTimeTableView.swift in Sources */,
+				8116C44725623DF4003D6706 /* CityTimeViewModel.swift in Sources */,
 				8116C3D82560B4F9003D6706 /* AppDelegate.swift in Sources */,
 				8116C3DA2560B4F9003D6706 /* SceneDelegate.swift in Sources */,
 			);
