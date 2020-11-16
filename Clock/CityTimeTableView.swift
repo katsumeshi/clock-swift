@@ -15,6 +15,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             fatalError("The dequeued cell is not an instance of MealTableViewCell.")
         }
         
+        cell.update()
+        
         return cell
     }
     
