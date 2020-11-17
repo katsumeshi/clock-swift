@@ -15,6 +15,7 @@ class CityTimeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.rx.setDelegate(self).disposed(by: bag)
         
         cityTimeViewModel
@@ -22,10 +23,14 @@ class CityTimeViewController: UIViewController {
             .observe(on: MainScheduler.instance)
             .bind(to: tableView.rx.items(cellIdentifier: "reuseIdentifier", cellType: CityTimeTableViewCell.self)) { (row, timeZone, cell) in
                 
+                cell.timeZone = timeZone
+                cell.updateCityName()
+                cell.updateTimeDiff()
+                
                 self.cityTimeViewModel.startTimer()
                     .observe(on: MainScheduler.instance)
                     .subscribe { date in
-                        cell.timeUpdate(date :date , timeZone: timeZone)
+                        cell.timeUpdate(date :date)
                     }.disposed(by: self.bag)
             }.disposed(by: bag)
         
