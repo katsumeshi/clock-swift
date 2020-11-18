@@ -20,8 +20,7 @@ class CityTimeTableViewCell: UITableViewCell {
     var timeZone = Zones.gmt
     
     func timeUpdate(date: Date) {
-        
-        time.text = dateInRegion(date: date).toFormat("HH:mm")
+        time.text = getDateInRegion(date: date).toFormat("HH:mm")
     }
     
     func updateCityName() {
@@ -31,23 +30,42 @@ class CityTimeTableViewCell: UITableViewCell {
     }
     
     func updateTimeDiff() {
-        let date = Date()
-        let convertedDate = date.convertToTimeZone(timeZone:  timeZone.toTimezone())
-        if let diff = (convertedDate - date).hour {
-            timeDifference.text = "+\(diff)HRS"
-        }
+        let currentDate = DateInRegion(Date(), region: Region.current)
+        
+        let tDiff = timeDiff(date: currentDate.date)
+        let dDiff = dateDiff(date: currentDate + tDiff.hours)
+        
+        timeDifference.text = "\(dDiff) +\(tDiff)HRS"
     }
     
-    func dateInRegion(date: Date) -> DateInRegion {
+    private func getDateInRegion(date: Date) -> DateInRegion {
         let region = Region(calendar: Calendars.gregorian, zone: timeZone, locale: Locales.english)
         return date.convertTo(region: region)
     }
     
+    private func timeDiff(date: Date) -> Int {
+        let targetDate = date.convertToTimeZone(timeZone: timeZone.toTimezone())
+        return (targetDate - date).hour ?? 0
+    }
+    
+    private func dateDiff(date: DateInRegion) -> String {
+        if date.compare(.isToday) {
+            return "Today"
+        } else if date.compare(.isTomorrow) {
+            return "Tomorrow"
+        } else if date.compare(.isYesterday) {
+            return "Yesterday"
+        }
+        return ""
+    }
 }
+
 
 extension Date {
     func convertToTimeZone(timeZone: TimeZone) -> Date {
          let delta = TimeInterval(timeZone.secondsFromGMT(for: self) - TimeZone.current.secondsFromGMT(for: self))
          return addingTimeInterval(delta)
     }
+    
+    
 }

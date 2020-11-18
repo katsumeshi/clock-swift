@@ -27,7 +27,7 @@ class CityTimeViewController: UIViewController {
                 cell.updateCityName()
                 cell.updateTimeDiff()
                 
-                self.cityTimeViewModel.startTimer()
+                self.cityTimeViewModel.startClock()
                     .observe(on: MainScheduler.instance)
                     .subscribe { date in
                         cell.timeUpdate(date :date)

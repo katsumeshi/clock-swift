@@ -15,32 +15,21 @@ class CityTimeViewModel {
     
     
     func setup() {
-        timeZones.onNext([Zones.americaLosAngeles, Zones.asiaTokyo])
+        timeZones.onNext([Zones.americaLosAngeles,
+                          Zones.asiaTokyo,
+                          Zones.americaNorthDakotaBeulah,
+                          Zones.americaVancouver,
+                          Zones.americaOjinaga])
         timeZones.onCompleted()
     }
     
     
-    func startTimer() -> Observable<Date> {
-        
-        
+    func startClock() -> Observable<Date> {
         return syncTimerInterval(RxTimeInterval.seconds(60))
             .flatMapLatest { (date) -> Observable<Date> in
                 self.timerInterval(RxTimeInterval.seconds(1), date: date)
             }
-        
-        //            .map {
-        //                let dateInRome = $0.convertTo(region: london)
-        //                return dateInRome.toFormat("HH:mm")
-        //            }
-        //            .bind(to: self.time.rx.text).disposed(by: disposeBag)
     }
-    
-    //    func a() {
-    //        let timeZoneIdentifiers = TimeZone.knownTimeZoneIdentifiers
-    //        let allCities = timeZoneIdentifiers.compactMap { identifier in
-    //            return identifier.split(separator: "/").last
-    //        }
-    //    }
 }
 
 
