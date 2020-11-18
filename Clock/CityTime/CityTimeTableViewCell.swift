@@ -37,6 +37,9 @@ class CityTimeTableViewCell: UITableViewCell {
         
         timeDifference.text = "\(dDiff) +\(tDiff)HRS"
     }
+}
+
+private extension CityTimeTableViewCell {
     
     private func getDateInRegion(date: Date) -> DateInRegion {
         let region = Region(calendar: Calendars.gregorian, zone: timeZone, locale: Locales.english)
@@ -66,6 +69,4 @@ extension Date {
          let delta = TimeInterval(timeZone.secondsFromGMT(for: self) - TimeZone.current.secondsFromGMT(for: self))
          return addingTimeInterval(delta)
     }
-    
-    
 }

@@ -33,11 +33,10 @@ class CityTimeViewModel {
 }
 
 
-extension CityTimeViewModel {
+private extension CityTimeViewModel {
     
     private func syncTimerInterval(_ interval: DispatchTimeInterval) -> Observable<Date> {
         return Observable.create { observer in
-            print("Subscribed")
             let timer = DispatchSource.makeTimerSource(queue: DispatchQueue.global())
             timer.schedule(deadline: DispatchTime.now() + interval, repeating: interval)
             
