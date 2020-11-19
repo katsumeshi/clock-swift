@@ -18,6 +18,9 @@
 		8116C3FA2560B4FA003D6706 /* ClockUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8116C3F92560B4FA003D6706 /* ClockUITests.swift */; };
 		8116C4142560C089003D6706 /* CityTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8116C4132560C089003D6706 /* CityTimeTableViewCell.swift */; };
 		8116C44725623DF4003D6706 /* CityTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8116C44625623DF4003D6706 /* CityTimeViewModel.swift */; };
+		816F018125662BD600079D6B /* ChooseCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816F018025662BD600079D6B /* ChooseCityViewController.swift */; };
+		816F018625662CDB00079D6B /* ChooseCityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816F018525662CDB00079D6B /* ChooseCityViewModel.swift */; };
+		816F018B25662D1100079D6B /* ChooseCityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816F018A25662D1100079D6B /* ChooseCityTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +57,9 @@
 		8116C3FB2560B4FA003D6706 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8116C4132560C089003D6706 /* CityTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTimeTableViewCell.swift; sourceTree = "<group>"; };
 		8116C44625623DF4003D6706 /* CityTimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTimeViewModel.swift; sourceTree = "<group>"; };
+		816F018025662BD600079D6B /* ChooseCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCityViewController.swift; sourceTree = "<group>"; };
+		816F018525662CDB00079D6B /* ChooseCityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCityViewModel.swift; sourceTree = "<group>"; };
+		816F018A25662D1100079D6B /* ChooseCityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCityTableViewCell.swift; sourceTree = "<group>"; };
 		E821F4760845600F6C8FD05B /* Pods_Clock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Clock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCCBBC7FFD60111C3C265177 /* Pods-Clock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clock.debug.xcconfig"; path = "Target Support Files/Pods-Clock/Pods-Clock.debug.xcconfig"; sourceTree = "<group>"; };
 		FE63C5C4D12A19A432A4C310 /* Pods-Clock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clock.release.xcconfig"; path = "Target Support Files/Pods-Clock/Pods-Clock.release.xcconfig"; sourceTree = "<group>"; };
@@ -119,6 +125,7 @@
 		8116C3D62560B4F9003D6706 /* Clock */ = {
 			isa = PBXGroup;
 			children = (
+				816F017F25662B9300079D6B /* ChooseCity */,
 				8116C44225623D65003D6706 /* CityTime */,
 				8116C3D72560B4F9003D6706 /* AppDelegate.swift */,
 				8116C3D92560B4F9003D6706 /* SceneDelegate.swift */,
@@ -156,6 +163,16 @@
 				8116C44625623DF4003D6706 /* CityTimeViewModel.swift */,
 			);
 			path = CityTime;
+			sourceTree = "<group>";
+		};
+		816F017F25662B9300079D6B /* ChooseCity */ = {
+			isa = PBXGroup;
+			children = (
+				816F018025662BD600079D6B /* ChooseCityViewController.swift */,
+				816F018525662CDB00079D6B /* ChooseCityViewModel.swift */,
+				816F018A25662D1100079D6B /* ChooseCityTableViewCell.swift */,
+			);
+			path = ChooseCity;
 			sourceTree = "<group>";
 		};
 		9758FD37390E48D67B315C18 /* Frameworks */ = {
@@ -340,9 +357,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				816F018125662BD600079D6B /* ChooseCityViewController.swift in Sources */,
 				8116C3DC2560B4F9003D6706 /* CityTimeViewController.swift in Sources */,
 				8116C4142560C089003D6706 /* CityTimeTableViewCell.swift in Sources */,
+				816F018625662CDB00079D6B /* ChooseCityViewModel.swift in Sources */,
 				8116C44725623DF4003D6706 /* CityTimeViewModel.swift in Sources */,
+				816F018B25662D1100079D6B /* ChooseCityTableViewCell.swift in Sources */,
 				8116C3D82560B4F9003D6706 /* AppDelegate.swift in Sources */,
 				8116C3DA2560B4F9003D6706 /* SceneDelegate.swift in Sources */,
 			);

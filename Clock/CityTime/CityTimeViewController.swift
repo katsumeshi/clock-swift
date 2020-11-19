@@ -36,12 +36,8 @@ class CityTimeViewController: UIViewController {
         
         cityTimeViewModel.setup()
     }
-
-
 }
 
-extension CityTimeViewController: UITableViewDelegate {
-    
-}
+extension CityTimeViewController: UITableViewDelegate {}
 
 

@@ -11,7 +11,7 @@ import Kronos
 
 class CityTimeViewModel {
     
-    public let timeZones : PublishSubject<[Zones]> = PublishSubject()
+    let timeZones : PublishSubject<[Zones]> = PublishSubject()
     
     
     func setup() {

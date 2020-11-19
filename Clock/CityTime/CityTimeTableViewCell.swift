@@ -24,9 +24,10 @@ class CityTimeTableViewCell: UITableViewCell {
     }
     
     func updateCityName() {
-        if let city = timeZone.rawValue.split(separator: "/").last {
-            cityName.text = "\(city.replacingOccurrences(of: "_", with: " "))"
-        }
+//        if let city = timeZone.rawValue.split(separator: "/").last {
+//            cityName.text = "\(city.replacingOccurrences(of: "_", with: " "))"
+//        }
+        cityName.text = timeZone.getCity()
     }
     
     func updateTimeDiff() {
@@ -58,6 +59,15 @@ private extension CityTimeTableViewCell {
             return "Tomorrow"
         } else if date.compare(.isYesterday) {
             return "Yesterday"
+        }
+        return ""
+    }
+}
+
+extension Zones {
+    func getCity() -> String {
+        if let city = self.rawValue.split(separator: "/").last {
+            return "\(city.replacingOccurrences(of: "_", with: " "))"
         }
         return ""
     }
