@@ -9,26 +9,39 @@ import RxSwift
 import SwiftDate
 import Kronos
 
-class CityTimeViewModel {
+class CityTime {
+    var timeZone: Zones
+    var date: Date = Date();
     
-    let timeZones : PublishSubject<[Zones]> = PublishSubject()
-    
-    
-    func setup() {
-        timeZones.onNext([Zones.americaLosAngeles,
-                          Zones.asiaTokyo,
-                          Zones.americaNorthDakotaBeulah,
-                          Zones.americaVancouver,
-                          Zones.americaOjinaga])
-        timeZones.onCompleted()
+    init(date: Date, timeZone: Zones) {
+        self.date = date
+        self.timeZone = timeZone
     }
     
+    init(timeZone: Zones) {
+        self.timeZone = timeZone
+    }
+}
+
+class CityTimeViewModel {
     
-    func startClock() -> Observable<Date> {
+    let timeZones : PublishSubject<[CityTime]> = PublishSubject()
+    let a: [CityTime] = [
+        CityTime(timeZone: Zones.americaLosAngeles),
+        CityTime(timeZone: Zones.asiaTokyo),
+        CityTime(timeZone: Zones.americaNorthDakotaBeulah),
+        CityTime(timeZone: Zones.americaVancouver),
+        CityTime(timeZone: Zones.americaOjinaga)
+    ]
+    
+    
+    func startClock() -> Observable<[CityTime]> {
         return syncTimerInterval(RxTimeInterval.seconds(60))
-            .flatMapLatest { (date) -> Observable<Date> in
-                self.timerInterval(RxTimeInterval.seconds(1), date: date)
-            }
+                .flatMapLatest { (date) -> Observable<Date> in
+                    self.timerInterval(RxTimeInterval.seconds(1), date: date)
+                }.map { date in
+                    self.a.map { CityTime(date: date, timeZone: $0.timeZone) }
+                }
     }
 }
 
@@ -42,11 +55,11 @@ private extension CityTimeViewModel {
             
             let cancel = Disposables.create { timer.cancel() }
             
-            observer.on(.next(Date()))
+            observer.onNext(Date())
             
             Clock.sync(completion:  { date, offset in
                 if let date = date  {
-                    observer.on(.next(date))
+                    observer.onNext(date)
                 }
             })
             
@@ -56,7 +69,7 @@ private extension CityTimeViewModel {
                 }
                 Clock.sync(completion:  { date, offset in
                     if let date = date  {
-                        observer.on(.next(date))
+                        observer.onNext(date)
                     }
                 })
             }
@@ -81,7 +94,7 @@ private extension CityTimeViewModel {
                     return
                 }
                 newDate = newDate + 1.seconds
-                observer.on(.next(newDate))
+                observer.onNext(newDate)
             }
             timer.resume()
             return cancel

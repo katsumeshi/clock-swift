@@ -19,22 +19,15 @@ class CityTimeViewController: UIViewController {
         tableView.rx.setDelegate(self).disposed(by: bag)
         
         cityTimeViewModel
-            .timeZones
+            .startClock()
             .observe(on: MainScheduler.instance)
             .bind(to: tableView.rx.items(cellIdentifier: "reuseIdentifier", cellType: CityTimeTableViewCell.self)) { (row, timeZone, cell) in
                 
-                cell.timeZone = timeZone
+                cell.timeZone = timeZone.timeZone
+                cell.timeUpdate(date: timeZone.date)
                 cell.updateCityName()
                 cell.updateTimeDiff()
-                
-                self.cityTimeViewModel.startClock()
-                    .observe(on: MainScheduler.instance)
-                    .subscribe { date in
-                        cell.timeUpdate(date :date)
-                    }.disposed(by: self.bag)
             }.disposed(by: bag)
-        
-        cityTimeViewModel.setup()
     }
 }
 

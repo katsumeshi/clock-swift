@@ -24,9 +24,6 @@ class CityTimeTableViewCell: UITableViewCell {
     }
     
     func updateCityName() {
-//        if let city = timeZone.rawValue.split(separator: "/").last {
-//            cityName.text = "\(city.replacingOccurrences(of: "_", with: " "))"
-//        }
         cityName.text = timeZone.getCity()
     }
     
