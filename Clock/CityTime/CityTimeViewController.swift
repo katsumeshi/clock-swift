@@ -10,7 +10,7 @@ import RxSwift
 
 class CityTimeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    var cityTimeViewModel = CityTimeViewModel()
+    var cityTimeViewModel: CityTimeViewModel!
     private let bag = DisposeBag()
 
     override func viewDidLoad() {
@@ -21,8 +21,9 @@ class CityTimeViewController: UIViewController {
         cityTimeViewModel
             .startClock()
             .observe(on: MainScheduler.instance)
-            .bind(to: tableView.rx.items(cellIdentifier: "reuseIdentifier", cellType: CityTimeTableViewCell.self)) { (row, timeZone, cell) in
-                
+            .bind(to: tableView.rx.items(cellIdentifier: "reuseIdentifier",
+                                         cellType: CityTimeTableViewCell.self))
+            { (row, timeZone, cell) in
                 cell.timeZone = timeZone.timeZone
                 cell.timeUpdate(date: timeZone.date)
                 cell.updateCityName()

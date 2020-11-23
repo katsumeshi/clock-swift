@@ -8,14 +8,25 @@
 import RxSwift
 import SwiftDate
 
+struct City {
+    var zone: Zones = Zones.gmt
+    var title: String {
+        get {
+            zone.getCity()
+        }
+    }
+}
+
 class ChooseCityViewModel {
     
 //    public let timeZones : PublishSubject<[Zones]> = PublishSubject()
     
     let timeZoneTitles = Observable.just(TimeZone.knownTimeZoneIdentifiers.map {
 //        "\($0.split(separator: "/").last ?? "")".replace
-        Zones(rawValue: $0)?.getCity()
-    }.filter { ($0?.count ?? 0) > 0 })
+//        Zones(rawValue: $0)?.getCity()
+        City(zone: Zones(rawValue: $0) ?? Zones.gmt)
+    })
+//    .filter { ($0?.count ?? 0) > 0 })
     
     
     func setup() {

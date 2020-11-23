@@ -6,14 +6,25 @@
 //
 
 import UIKit
+import Swinject
+import SwinjectStoryboard
+
+extension SwinjectStoryboard {
+    @objc class func setup() {
+        defaultContainer.register(DataStore.self) { _ in DataStore() }
+        defaultContainer.register(CityTimeViewModel.self) { r in
+            CityTimeViewModel(dataStore: r.resolve(DataStore.self)!)
+        }
+        defaultContainer.storyboardInitCompleted(CityTimeViewController.self) { r, c in
+            c.cityTimeViewModel = r.resolve(CityTimeViewModel.self)
+        }
+    }
+}
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         return true
     }
 
@@ -30,7 +41,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
-
+    
 }
-

@@ -5,4 +5,6 @@ target 'Clock' do
     pod 'RxCocoa', '6.0.0-rc.1'
     pod 'Kronos'
     pod 'SwiftDate'
+    pod 'Swinject'
+    pod 'SwinjectStoryboard'
 end

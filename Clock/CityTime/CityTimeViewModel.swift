@@ -26,13 +26,19 @@ class CityTime {
 class CityTimeViewModel {
     
     let timeZones : PublishSubject<[CityTime]> = PublishSubject()
-    let a: [CityTime] = [
+    var a: [CityTime] = [
         CityTime(timeZone: Zones.americaLosAngeles),
         CityTime(timeZone: Zones.asiaTokyo),
         CityTime(timeZone: Zones.americaNorthDakotaBeulah),
         CityTime(timeZone: Zones.americaVancouver),
         CityTime(timeZone: Zones.americaOjinaga)
     ]
+    
+    init(dataStore: DataStore) {
+        a = dataStore.get().map {
+            CityTime(timeZone: $0.zone)
+        }
+    }
     
     
     func startClock() -> Observable<[CityTime]> {

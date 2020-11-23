@@ -21,27 +21,16 @@ class ChooseCityViewController: UIViewController {
         chooseCityViewModel
             .timeZoneTitles
             .observe(on: MainScheduler.instance)
-            .bind(to: tableView.rx.items(cellIdentifier: "reuseIdentifier", cellType: ChooseCityTableViewCell.self)) { (row, title, cell) in
-                cell.title.text = title
+            .bind(to: tableView.rx.items(cellIdentifier: "reuseIdentifier", cellType: ChooseCityTableViewCell.self)) { (row, city, cell) in
+                cell.title.text = city.title
             }.disposed(by: bag)
         
-//        cityTimeViewModel
-//            .timeZones
-//            .observe(on: MainScheduler.instance)
-//            .bind(to: tableView.rx.items(cellIdentifier: "reuseIdentifier", cellType: CityTimeTableViewCell.self)) { (row, timeZone, cell) in
-//
-//                cell.timeZone = timeZone
-//                cell.updateCityName()
-//                cell.updateTimeDiff()
-//
-//                self.cityTimeViewModel.startClock()
-//                    .observe(on: MainScheduler.instance)
-//                    .subscribe { date in
-//                        cell.timeUpdate(date :date)
-//                    }.disposed(by: self.bag)
-//            }.disposed(by: bag)
-//
-//        cityTimeViewModel.setup()
+        tableView.rx.modelSelected(City.self)
+            .subscribe(onNext: { [unowned self] city in
+                print(city)
+                self.dismiss(animated: true)
+            })
+            .disposed(by: bag)
     }
 }
 

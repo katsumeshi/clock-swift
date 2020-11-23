@@ -7,12 +7,17 @@ PODS:
     - RxSwift (= 6.0.0-rc.1)
   - RxSwift (6.0.0-rc.1)
   - SwiftDate (6.2.0)
+  - Swinject (2.7.1)
+  - SwinjectStoryboard (2.2.0):
+    - Swinject (~> 2.6)
 
 DEPENDENCIES:
   - Kronos
   - RxCocoa (= 6.0.0-rc.1)
   - RxSwift (= 6.0.0-rc.1)
   - SwiftDate
+  - Swinject
+  - SwinjectStoryboard
 
 SPEC REPOS:
   trunk:
@@ -21,6 +26,8 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - SwiftDate
+    - Swinject
+    - SwinjectStoryboard
 
 SPEC CHECKSUMS:
   Kronos: 0b5ed8c8f3047315a5cb7cbde99b0d7600afe99e
@@ -28,7 +35,9 @@ SPEC CHECKSUMS:
   RxRelay: 56abad6d32f73567858506d08735fdb341935b9a
   RxSwift: dae1a32c48148897494b9e2a6b00a68b40694236
   SwiftDate: d117c3eb6beed72e47d3f4d1e3bc63fa1e66d7c3
+  Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
+  SwinjectStoryboard: 32512ef16c2b0ff5b8f823b23539c4a50f6d3383
 
-PODFILE CHECKSUM: 1432922c359015d1b75a2a13ce9b3b260a7108b2
+PODFILE CHECKSUM: da1f7088051ae77937aa8fe294c2b46e59e2f033
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0
