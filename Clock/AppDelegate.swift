@@ -11,12 +11,19 @@ import SwinjectStoryboard
 
 extension SwinjectStoryboard {
     @objc class func setup() {
-        defaultContainer.register(DataStore.self) { _ in DataStore() }
+        let dataStore = DataStore()
+        defaultContainer.register(DataStore.self) { _ in dataStore }
+        defaultContainer.register(ChooseCityViewModel.self) { r in
+            ChooseCityViewModel(dataStore: r.resolve(DataStore.self)!)
+        }
         defaultContainer.register(CityTimeViewModel.self) { r in
             CityTimeViewModel(dataStore: r.resolve(DataStore.self)!)
         }
         defaultContainer.storyboardInitCompleted(CityTimeViewController.self) { r, c in
             c.cityTimeViewModel = r.resolve(CityTimeViewModel.self)
+        }
+        defaultContainer.storyboardInitCompleted(ChooseCityViewController.self) { r, c in
+            c.chooseCityViewModel = r.resolve(ChooseCityViewModel.self)
         }
     }
 }
@@ -37,9 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        // Called when the user discards a scene session.
-        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
     
 }

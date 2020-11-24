@@ -6,6 +6,7 @@
 //
 
 import RxSwift
+import RxCocoa
 import SwiftDate
 import Kronos
 
@@ -25,29 +26,27 @@ class CityTime {
 
 class CityTimeViewModel {
     
-    let timeZones : PublishSubject<[CityTime]> = PublishSubject()
-    var a: [CityTime] = [
-        CityTime(timeZone: Zones.americaLosAngeles),
-        CityTime(timeZone: Zones.asiaTokyo),
-        CityTime(timeZone: Zones.americaNorthDakotaBeulah),
-        CityTime(timeZone: Zones.americaVancouver),
-        CityTime(timeZone: Zones.americaOjinaga)
-    ]
+    private var timeZones = BehaviorRelay<[CityTime]>(value: [])
+    var a: Observable<[CityTime]> {
+        return timeZones.asObservable()
+    }
+    private let bag = DisposeBag()
     
     init(dataStore: DataStore) {
-        a = dataStore.get().map {
-            CityTime(timeZone: $0.zone)
-        }
-    }
-    
-    
-    func startClock() -> Observable<[CityTime]> {
-        return syncTimerInterval(RxTimeInterval.seconds(60))
+        
+        let b = syncTimerInterval(RxTimeInterval.seconds(60))
                 .flatMapLatest { (date) -> Observable<Date> in
                     self.timerInterval(RxTimeInterval.seconds(1), date: date)
-                }.map { date in
-                    self.a.map { CityTime(date: date, timeZone: $0.timeZone) }
                 }
+        
+        let c = dataStore.timezones
+        
+        Observable.combineLatest(b, c).subscribe { (d, g) in
+            self.timeZones.accept(  g.map { gg in
+                CityTime(date: d, timeZone: gg.zone)
+            })
+        }.disposed(by: bag)
+
     }
 }
 

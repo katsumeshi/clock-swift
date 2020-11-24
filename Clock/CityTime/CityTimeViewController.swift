@@ -17,9 +17,8 @@ class CityTimeViewController: UIViewController {
         super.viewDidLoad()
         
         tableView.rx.setDelegate(self).disposed(by: bag)
-        
-        cityTimeViewModel
-            .startClock()
+            
+        cityTimeViewModel.a
             .observe(on: MainScheduler.instance)
             .bind(to: tableView.rx.items(cellIdentifier: "reuseIdentifier",
                                          cellType: CityTimeTableViewCell.self))

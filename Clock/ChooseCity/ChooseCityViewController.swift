@@ -10,7 +10,7 @@ import RxSwift
 
 class ChooseCityViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    var chooseCityViewModel = ChooseCityViewModel()
+    var chooseCityViewModel: ChooseCityViewModel!
     private let bag = DisposeBag()
 
     override func viewDidLoad() {
@@ -27,7 +27,7 @@ class ChooseCityViewController: UIViewController {
         
         tableView.rx.modelSelected(City.self)
             .subscribe(onNext: { [unowned self] city in
-                print(city)
+                chooseCityViewModel.addCity(city: city)
                 self.dismiss(animated: true)
             })
             .disposed(by: bag)

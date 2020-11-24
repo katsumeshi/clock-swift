@@ -6,15 +6,17 @@
 //
 
 import Foundation
+import RxCocoa
+import RxSwift
 
 final class DataStore {
-    private var timezone: [City] = []
+    private var timezone = BehaviorRelay<[City]>(value: [])
     
-    func get() -> [City] {
-        return timezone
+    var timezones: Observable<[City]> {
+        return timezone.asObservable()
     }
     
     func add(city: City) {
-        timezone.append(city)
+        timezone.accept(timezone.value + [city])
     }
 }

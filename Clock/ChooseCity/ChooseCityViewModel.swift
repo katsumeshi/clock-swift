@@ -19,30 +19,17 @@ struct City {
 
 class ChooseCityViewModel {
     
-//    public let timeZones : PublishSubject<[Zones]> = PublishSubject()
+    var dataStore: DataStore!
     
     let timeZoneTitles = Observable.just(TimeZone.knownTimeZoneIdentifiers.map {
-//        "\($0.split(separator: "/").last ?? "")".replace
-//        Zones(rawValue: $0)?.getCity()
         City(zone: Zones(rawValue: $0) ?? Zones.gmt)
     })
-//    .filter { ($0?.count ?? 0) > 0 })
     
-    
-    func setup() {
-//        timeZones.onNext([Zones.americaLosAngeles,
-//                          Zones.asiaTokyo,
-//                          Zones.americaNorthDakotaBeulah,
-//                          Zones.americaVancouver,
-//                          Zones.americaOjinaga])
-//        timeZones.onCompleted()
+    init(dataStore: DataStore) {
+        self.dataStore = dataStore
     }
     
-    
-//    func startClock() -> Observable<Date> {
-//        return syncTimerInterval(RxTimeInterval.seconds(60))
-//            .flatMapLatest { (date) -> Observable<Date> in
-//                self.timerInterval(RxTimeInterval.seconds(1), date: date)
-//            }
-//    }
+    func addCity(city: City) {
+        dataStore.add(city: city)
+    }
 }
