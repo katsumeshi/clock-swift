@@ -19,6 +19,7 @@ struct CityTime: Hashable {
     static func ==(lhs: CityTime, rhs: CityTime) -> Bool {
         return lhs.zone == rhs.zone
     }
+    func hash(into hasher: inout Hasher) { }
 }
 
 class ChooseCityViewModel {

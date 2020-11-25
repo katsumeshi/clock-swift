@@ -16,9 +16,9 @@ final class DataStore {
     }
     
     func add(cityTime: CityTime) {
-        var value = self._cityTimes.value
-        value.insert(cityTime)
-        _cityTimes.accept(value)
+        var value = Array(_cityTimes.value)
+        value.append(cityTime)
+        _cityTimes.accept(Set(value))
     }
     
 }

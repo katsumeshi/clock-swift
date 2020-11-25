@@ -20,7 +20,7 @@ class ChooseCityViewController: UIViewController {
         
         chooseCityViewModel
             .timeZoneTitles
-            .observe(on: MainScheduler.instance)
+            .observeOn(MainScheduler.instance)
             .bind(to: tableView.rx.items(cellIdentifier: "reuseIdentifier", cellType: ChooseCityTableViewCell.self)) { (row, city, cell) in
                 cell.title.text = city.title
             }.disposed(by: bag)
@@ -34,4 +34,5 @@ class ChooseCityViewController: UIViewController {
     }
 }
 
-extension ChooseCityViewController: UITableViewDelegate {}
+extension ChooseCityViewController: UITableViewDelegate {
+}

@@ -18,8 +18,8 @@ class CityTimeViewController: UIViewController {
         
         tableView.rx.setDelegate(self).disposed(by: bag)
             
-        cityTimeViewModel.a
-            .observe(on: MainScheduler.instance)
+        cityTimeViewModel.cityTimes
+            .observeOn(MainScheduler.instance)
             .bind(to: tableView.rx.items(cellIdentifier: "reuseIdentifier",
                                          cellType: CityTimeTableViewCell.self))
             { (row, cityTime, cell) in
@@ -32,5 +32,3 @@ class CityTimeViewController: UIViewController {
 }
 
 extension CityTimeViewController: UITableViewDelegate {}
-
-

@@ -1,28 +1,36 @@
 PODS:
+  - Differentiator (4.0.1)
   - Kronos (4.1.1)
-  - RxCocoa (6.0.0-rc.1):
-    - RxRelay (= 6.0.0-rc.1)
-    - RxSwift (= 6.0.0-rc.1)
-  - RxRelay (6.0.0-rc.1):
-    - RxSwift (= 6.0.0-rc.1)
-  - RxSwift (6.0.0-rc.1)
-  - SwiftDate (6.2.0)
+  - RxCocoa (5.0.0):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxDataSources (4.0.1):
+    - Differentiator (~> 4.0)
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.0)
+  - SwiftDate (6.3.1)
   - Swinject (2.7.1)
   - SwinjectStoryboard (2.2.0):
     - Swinject (~> 2.6)
 
 DEPENDENCIES:
   - Kronos
-  - RxCocoa (= 6.0.0-rc.1)
-  - RxSwift (= 6.0.0-rc.1)
+  - RxCocoa (= 5.0.0)
+  - RxDataSources (~> 4.0)
+  - RxSwift (= 5.0.0)
   - SwiftDate
   - Swinject
   - SwinjectStoryboard
 
 SPEC REPOS:
   trunk:
+    - Differentiator
     - Kronos
     - RxCocoa
+    - RxDataSources
     - RxRelay
     - RxSwift
     - SwiftDate
@@ -30,14 +38,16 @@ SPEC REPOS:
     - SwinjectStoryboard
 
 SPEC CHECKSUMS:
+  Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   Kronos: 0b5ed8c8f3047315a5cb7cbde99b0d7600afe99e
-  RxCocoa: a28d75145c07b7547b85faf1e1ad8b25af88a752
-  RxRelay: 56abad6d32f73567858506d08735fdb341935b9a
-  RxSwift: dae1a32c48148897494b9e2a6b00a68b40694236
-  SwiftDate: d117c3eb6beed72e47d3f4d1e3bc63fa1e66d7c3
+  RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
+  RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
+  SwiftDate: 72d28954e8e1c6c1c0f917ccc8005e4f83c7d4b2
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
   SwinjectStoryboard: 32512ef16c2b0ff5b8f823b23539c4a50f6d3383
 
-PODFILE CHECKSUM: da1f7088051ae77937aa8fe294c2b46e59e2f033
+PODFILE CHECKSUM: 0291a6dd40c7986bdf3cc69bf90ba1a3bc243070
 
 COCOAPODS: 1.10.0

@@ -12,9 +12,9 @@ import Kronos
 
 class CityTimeViewModel {
     
-    private var timeZones = BehaviorRelay<[CityTime]>(value: [])
-    var a: Observable<[CityTime]> {
-        return timeZones.asObservable()
+    private let _cityTimes = BehaviorRelay<[CityTime]>(value: [])
+    var cityTimes: Observable<[CityTime]> {
+        return _cityTimes.asObservable()
     }
     private let bag = DisposeBag()
     
@@ -28,7 +28,7 @@ class CityTimeViewModel {
         let cityTimes = dataStore.cityTimes
         
         Observable.combineLatest(syncedTimer, cityTimes).subscribe { [unowned self] (date, cityTimes) in
-            self.timeZones.accept( cityTimes.map { cityTime in
+            self._cityTimes.accept( cityTimes.map { cityTime in
                 CityTime(zone: cityTime.zone, date: date)
             })
         }.disposed(by: bag)
