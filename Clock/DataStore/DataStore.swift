@@ -10,13 +10,15 @@ import RxCocoa
 import RxSwift
 
 final class DataStore {
-    private var timezone = BehaviorRelay<[City]>(value: [])
-    
-    var timezones: Observable<[City]> {
-        return timezone.asObservable()
+    private var _cityTimes = BehaviorRelay<Set<CityTime>>(value: [])
+    var cityTimes: Observable<Set<CityTime>> {
+        return _cityTimes.asObservable()
     }
     
-    func add(city: City) {
-        timezone.accept(timezone.value + [city])
+    func add(cityTime: CityTime) {
+        var value = self._cityTimes.value
+        value.insert(cityTime)
+        _cityTimes.accept(value)
     }
+    
 }

@@ -25,9 +25,9 @@ class ChooseCityViewController: UIViewController {
                 cell.title.text = city.title
             }.disposed(by: bag)
         
-        tableView.rx.modelSelected(City.self)
-            .subscribe(onNext: { [unowned self] city in
-                chooseCityViewModel.addCity(city: city)
+        tableView.rx.modelSelected(CityTime.self)
+            .subscribe(onNext: { [unowned self] cityTime in
+                chooseCityViewModel.addCityTime(cityTime: cityTime)
                 self.dismiss(animated: true)
             })
             .disposed(by: bag)

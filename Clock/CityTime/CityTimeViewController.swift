@@ -22,9 +22,9 @@ class CityTimeViewController: UIViewController {
             .observe(on: MainScheduler.instance)
             .bind(to: tableView.rx.items(cellIdentifier: "reuseIdentifier",
                                          cellType: CityTimeTableViewCell.self))
-            { (row, timeZone, cell) in
-                cell.timeZone = timeZone.timeZone
-                cell.timeUpdate(date: timeZone.date)
+            { (row, cityTime, cell) in
+                cell.timeZone = cityTime.zone
+                cell.timeUpdate(date: cityTime.date)
                 cell.updateCityName()
                 cell.updateTimeDiff()
             }.disposed(by: bag)
