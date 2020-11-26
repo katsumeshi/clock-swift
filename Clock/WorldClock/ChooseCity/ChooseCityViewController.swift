@@ -6,7 +6,9 @@
 //
 
 import UIKit
+import RxDataSources
 import RxSwift
+import RxCocoa
 
 class ChooseCityViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -35,4 +37,19 @@ class ChooseCityViewController: UIViewController {
 }
 
 extension ChooseCityViewController: UITableViewDelegate {
+}
+
+extension ChooseCityViewController {
+    static func dataSource() -> RxTableViewSectionedAnimatedDataSource<CityTimeSection> {
+        return RxTableViewSectionedAnimatedDataSource(
+            configureCell: { _, table, idxPath, item in
+                let cell = table.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: idxPath)  as! ChooseCityTableViewCell
+                cell.title.text = item.title
+                return cell
+            },
+            sectionIndexTitles: {_ in
+                return ["a"]
+            }
+        )
+    }
 }

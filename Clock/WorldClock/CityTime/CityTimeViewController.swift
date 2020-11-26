@@ -50,21 +50,13 @@ class CityTimeViewController: UIViewController {
 
 extension CityTimeViewController: UITableViewDelegate {}
 
-enum SectionID: String, IdentifiableType {
-    case section1
-
-    var identity: String {
-        return self.rawValue
-    }
-}
-typealias SampleSectionModel = AnimatableSectionModel<SectionID, CityTime>
 
 extension CityTimeViewController {
-    static func dataSource() -> RxTableViewSectionedAnimatedDataSource<SampleSectionModel> {
+    static func dataSource() -> RxTableViewSectionedAnimatedDataSource<CityTimeSection> {
         return RxTableViewSectionedAnimatedDataSource(
             configureCell: { _, table, idxPath, item in
                 let cell = table.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: idxPath)  as! CityTimeTableViewCell
-                cell.timeZone = item.identity
+                cell.timeZone = item.zone
                 cell.timeUpdate(date: item.date, visible: !table.isEditing)
                 cell.updateCityName()
                 cell.updateTimeDiff()

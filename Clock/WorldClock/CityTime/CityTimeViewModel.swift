@@ -12,8 +12,8 @@ import Kronos
 
 class CityTimeViewModel {
     
-    private let _cityTimes = BehaviorRelay<[SampleSectionModel]>(value: [])
-    var cityTimes: Observable<[SampleSectionModel]> {
+    private let _cityTimes = BehaviorRelay<[CityTimeSection]>(value: [])
+    var cityTimes: Observable<[CityTimeSection]> {
         return _cityTimes.asObservable()
     }
     private let bag = DisposeBag()
@@ -30,21 +30,19 @@ class CityTimeViewModel {
         
         Observable.combineLatest(syncedTimer, cityTimes).subscribe { [unowned self] (date, cityTimes) in
             let cities = cityTimes.map { cityTime in
-                CityTime(identity: cityTime.identity, date: date)
+                CityTime(zone: cityTime.zone, date: date)
             }
-            let model = SampleSectionModel(model: .section1, items: cities)
+            let model = CityTimeSection(cityTimes: cities)
             self._cityTimes.accept([model])
         }.disposed(by: bag)
 
     }
     
     func remove(indexPath: IndexPath) {
-//        guard let item = _cityTimes.value.first?.items[] else { return }
         dataStore.remove(index: indexPath.row)
     }
     
     func move(sourceIndex: IndexPath, destinationIndex: IndexPath) {
-//        guard let item = _cityTimes.value.first?.items[sourceIndex.row] else { return }
         dataStore.move(from: sourceIndex.row, to: destinationIndex.row)
     }
 }
