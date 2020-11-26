@@ -10,21 +10,31 @@ import RxCocoa
 import RxSwift
 
 final class DataStore {
-    private var _cityTimes = BehaviorRelay<Set<CityTime>>(value: [])
-    var cityTimes: Observable<Set<CityTime>> {
+    private var _cityTimes = BehaviorRelay<[CityTime]>(value: [])
+    var cityTimes: Observable<[CityTime]> {
         return _cityTimes.asObservable()
     }
     
     func add(cityTime: CityTime) {
-        var value = Array(_cityTimes.value)
-        value.append(cityTime)
-        _cityTimes.accept(Set(value))
+        var value = _cityTimes.value
+        if !value.contains(cityTime) {
+            value.append(cityTime)
+        }
+        _cityTimes.accept(value)
     }
     
-    func remove(cityTime: CityTime) {
+    func remove(index: Int) {
         var val = _cityTimes.value
-        val.remove(cityTime)
+        val.remove(at: index)
         _cityTimes.accept(val)
+    }
+    
+    func move(from: Int, to: Int) {
+        var cities = _cityTimes.value
+        let insertCity = cities[from]
+        cities.remove(at: from)
+        cities.insert(insertCity, at: to)
+        _cityTimes.accept(cities)
     }
     
 }

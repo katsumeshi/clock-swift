@@ -39,8 +39,13 @@ class CityTimeViewModel {
     }
     
     func remove(indexPath: IndexPath) {
-        guard let item = _cityTimes.value.first?.items[indexPath.row] else { return }
-        dataStore.remove(cityTime: item)
+//        guard let item = _cityTimes.value.first?.items[] else { return }
+        dataStore.remove(index: indexPath.row)
+    }
+    
+    func move(sourceIndex: IndexPath, destinationIndex: IndexPath) {
+//        guard let item = _cityTimes.value.first?.items[sourceIndex.row] else { return }
+        dataStore.move(from: sourceIndex.row, to: destinationIndex.row)
     }
 }
 

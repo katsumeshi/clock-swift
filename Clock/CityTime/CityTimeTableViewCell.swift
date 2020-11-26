@@ -19,8 +19,9 @@ class CityTimeTableViewCell: UITableViewCell {
     private let disposeBag = DisposeBag()
     var timeZone = Zones.gmt
     
-    func timeUpdate(date: Date) {
+    func timeUpdate(date: Date, visible: Bool) {
         time.text = getDateInRegion(date: date).toFormat("HH:mm")
+        time.isHidden = !visible
     }
     
     func updateCityName() {
