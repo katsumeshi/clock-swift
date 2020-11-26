@@ -20,7 +20,7 @@ extension SwinjectStoryboard {
             CityTimeViewModel(dataStore: r.resolve(DataStore.self)!)
         }
         defaultContainer.storyboardInitCompleted(CityTimeViewController.self) { r, c in
-            c.cityTimeViewModel = r.resolve(CityTimeViewModel.self)
+            c.viewModel = r.resolve(CityTimeViewModel.self)
         }
         defaultContainer.storyboardInitCompleted(ChooseCityViewController.self) { r, c in
             c.chooseCityViewModel = r.resolve(ChooseCityViewModel.self)

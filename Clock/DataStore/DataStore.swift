@@ -21,4 +21,10 @@ final class DataStore {
         _cityTimes.accept(Set(value))
     }
     
+    func remove(cityTime: CityTime) {
+        var val = _cityTimes.value
+        val.remove(cityTime)
+        _cityTimes.accept(val)
+    }
+    
 }

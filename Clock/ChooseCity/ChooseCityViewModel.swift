@@ -7,17 +7,28 @@
 
 import RxSwift
 import SwiftDate
+import RxDataSources
 
-struct CityTime: Hashable {
-    var zone: Zones = Zones.gmt
+extension Zones : IdentifiableType {
+    public typealias Identity = Zones
+
+    public var identity: Zones {
+        return self
+    }
+}
+
+struct CityTime: IdentifiableType, Hashable, Equatable {
+    
+    var identity: Zones = Zones.gmt
     var date: Date = Date();
     var title: String {
         get {
-            zone.getCity()
+            identity.getCity()
         }
     }
+    
     static func ==(lhs: CityTime, rhs: CityTime) -> Bool {
-        return lhs.zone == rhs.zone
+        return lhs.identity == rhs.identity
     }
     func hash(into hasher: inout Hasher) { }
 }
@@ -27,7 +38,7 @@ class ChooseCityViewModel {
     var dataStore: DataStore!
     
     let timeZoneTitles = Observable.just(TimeZone.knownTimeZoneIdentifiers.map {
-        CityTime(zone: Zones(rawValue: $0) ?? Zones.gmt)
+        CityTime(identity: Zones(rawValue: $0) ?? Zones.gmt)
     })
     
     init(dataStore: DataStore) {
