@@ -22,6 +22,8 @@
 		816F018125662BD600079D6B /* ChooseCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816F018025662BD600079D6B /* ChooseCityViewController.swift */; };
 		816F018625662CDB00079D6B /* ChooseCityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816F018525662CDB00079D6B /* ChooseCityViewModel.swift */; };
 		816F018B25662D1100079D6B /* ChooseCityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816F018A25662D1100079D6B /* ChooseCityTableViewCell.swift */; };
+		817FB05C2571AFF3008F12E9 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817FB05B2571AFF3008F12E9 /* TimerViewController.swift */; };
+		817FB0642571B000008F12E9 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817FB0632571B000008F12E9 /* TimerViewModel.swift */; };
 		81ED1191257070A00029D024 /* CityTimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81ED1190257070A00029D024 /* CityTimeModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +65,8 @@
 		816F018025662BD600079D6B /* ChooseCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCityViewController.swift; sourceTree = "<group>"; };
 		816F018525662CDB00079D6B /* ChooseCityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCityViewModel.swift; sourceTree = "<group>"; };
 		816F018A25662D1100079D6B /* ChooseCityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCityTableViewCell.swift; sourceTree = "<group>"; };
+		817FB05B2571AFF3008F12E9 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		817FB0632571B000008F12E9 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		81ED1190257070A00029D024 /* CityTimeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTimeModel.swift; sourceTree = "<group>"; };
 		E821F4760845600F6C8FD05B /* Pods_Clock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Clock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCCBBC7FFD60111C3C265177 /* Pods-Clock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clock.debug.xcconfig"; path = "Target Support Files/Pods-Clock/Pods-Clock.debug.xcconfig"; sourceTree = "<group>"; };
@@ -129,6 +133,7 @@
 		8116C3D62560B4F9003D6706 /* Clock */ = {
 			isa = PBXGroup;
 			children = (
+				817FB05A2571AFC7008F12E9 /* Timer */,
 				8138FD4425706C4D004F9279 /* WorldClock */,
 				811778FA256B530A00352CBF /* DataStore */,
 				8116C3D72560B4F9003D6706 /* AppDelegate.swift */,
@@ -195,6 +200,15 @@
 				816F018A25662D1100079D6B /* ChooseCityTableViewCell.swift */,
 			);
 			path = ChooseCity;
+			sourceTree = "<group>";
+		};
+		817FB05A2571AFC7008F12E9 /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				817FB05B2571AFF3008F12E9 /* TimerViewController.swift */,
+				817FB0632571B000008F12E9 /* TimerViewModel.swift */,
+			);
+			path = Timer;
 			sourceTree = "<group>";
 		};
 		81ED11952570717E0029D024 /* Model */ = {
@@ -391,11 +405,13 @@
 				81ED1191257070A00029D024 /* CityTimeModel.swift in Sources */,
 				811778FC256B532000352CBF /* DataStore.swift in Sources */,
 				8116C3DC2560B4F9003D6706 /* CityTimeViewController.swift in Sources */,
+				817FB0642571B000008F12E9 /* TimerViewModel.swift in Sources */,
 				8116C4142560C089003D6706 /* CityTimeTableViewCell.swift in Sources */,
 				816F018625662CDB00079D6B /* ChooseCityViewModel.swift in Sources */,
 				8116C44725623DF4003D6706 /* CityTimeViewModel.swift in Sources */,
 				816F018B25662D1100079D6B /* ChooseCityTableViewCell.swift in Sources */,
 				8116C3D82560B4F9003D6706 /* AppDelegate.swift in Sources */,
+				817FB05C2571AFF3008F12E9 /* TimerViewController.swift in Sources */,
 				8116C3DA2560B4F9003D6706 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

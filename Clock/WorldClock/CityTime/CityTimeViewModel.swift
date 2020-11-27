@@ -87,7 +87,6 @@ private extension CityTimeViewModel {
             
             let cancel = Disposables.create {
                 timer.cancel()
-                
             }
             
             var newDate = date
