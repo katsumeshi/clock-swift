@@ -21,6 +21,11 @@ class ChooseCityViewModel {
         $0.title.first?.uppercased() ?? ""
     }).sorted())
     
+    static let cityTimeSection: [CityTimeSection] = titles.map { initial in
+        let items = cityTimes.filter { $0.title.prefix(1) == initial }
+        return CityTimeSection(header: initial, cityTimes: items)
+    }
+    
     private let _cityTimes = BehaviorRelay<[CityTimeSection]>(value: [])
     var cityTimes: Observable<[CityTimeSection]> {
         return _cityTimes.asObservable()
@@ -28,7 +33,8 @@ class ChooseCityViewModel {
     
     init(dataStore: DataStore) {
         self.dataStore = dataStore
-        _cityTimes.accept([CityTimeSection(cityTimes: ChooseCityViewModel.cityTimes)])
+        let items = ChooseCityViewModel.cityTimeSection
+        _cityTimes.accept(items)
     }
     
     func addCityTime(cityTime: CityTime) {

@@ -12,6 +12,7 @@ import RxCocoa
 import SwiftDate
 
 struct CityTimeSection {
+    var header: String
     var cityTimes: [CityTime]
 }
 
@@ -20,7 +21,7 @@ extension CityTimeSection: AnimatableSectionModelType {
     typealias Item = CityTime
 
     var identity: String {
-        return ""
+        return header
     }
     
     var items: [CityTime] {

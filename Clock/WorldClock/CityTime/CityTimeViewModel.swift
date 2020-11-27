@@ -32,7 +32,7 @@ class CityTimeViewModel {
             let cities = cityTimes.map { cityTime in
                 CityTime(zone: cityTime.zone, date: date)
             }
-            let model = CityTimeSection(cityTimes: cities)
+            let model = CityTimeSection(header: "", cityTimes: cities)
             self._cityTimes.accept([model])
         }.disposed(by: bag)
 

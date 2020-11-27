@@ -49,8 +49,8 @@ private extension ChooseCityViewController {
             sectionIndexTitles: { item in
                 return ChooseCityViewModel.titles
             },
-            sectionForSectionIndexTitle: { _,_,_  in
-                return 0
+            sectionForSectionIndexTitle: { table, title, index  in
+                return ChooseCityViewModel.titles.firstIndex(of: title) ?? 0
             }
         )
     }
