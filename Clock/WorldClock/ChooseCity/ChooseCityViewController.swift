@@ -12,7 +12,7 @@ import RxCocoa
 
 class ChooseCityViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    var chooseCityViewModel: ChooseCityViewModel!
+    var viewModel: ChooseCityViewModel!
     private let bag = DisposeBag()
 
     override func viewDidLoad() {
@@ -20,35 +20,37 @@ class ChooseCityViewController: UIViewController {
         
         tableView.rx.setDelegate(self).disposed(by: bag)
         
-        chooseCityViewModel
-            .timeZoneTitles
+        let dataSource = ChooseCityViewController.dataSource()
+        
+        viewModel.cityTimes
             .observeOn(MainScheduler.instance)
-            .bind(to: tableView.rx.items(cellIdentifier: "reuseIdentifier", cellType: ChooseCityTableViewCell.self)) { (row, city, cell) in
-                cell.title.text = city.title
-            }.disposed(by: bag)
+            .bind(to: tableView.rx.items(dataSource: dataSource))
+            .disposed(by: bag)
         
         tableView.rx.modelSelected(CityTime.self)
             .subscribe(onNext: { [unowned self] cityTime in
-                chooseCityViewModel.addCityTime(cityTime: cityTime)
+                viewModel.addCityTime(cityTime: cityTime)
                 self.dismiss(animated: true)
             })
             .disposed(by: bag)
     }
 }
 
-extension ChooseCityViewController: UITableViewDelegate {
-}
+extension ChooseCityViewController: UITableViewDelegate {}
 
-extension ChooseCityViewController {
+private extension ChooseCityViewController {
     static func dataSource() -> RxTableViewSectionedAnimatedDataSource<CityTimeSection> {
         return RxTableViewSectionedAnimatedDataSource(
             configureCell: { _, table, idxPath, item in
-                let cell = table.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: idxPath)  as! ChooseCityTableViewCell
+                let cell = table.dequeueReusableCell(withIdentifier: "ChooseCityTableViewCell", for: idxPath)  as! ChooseCityTableViewCell
                 cell.title.text = item.title
                 return cell
             },
-            sectionIndexTitles: {_ in
-                return ["a"]
+            sectionIndexTitles: { item in
+                return ChooseCityViewModel.titles
+            },
+            sectionForSectionIndexTitle: { _,_,_  in
+                return 0
             }
         )
     }

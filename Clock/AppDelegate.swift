@@ -23,7 +23,7 @@ extension SwinjectStoryboard {
             c.viewModel = r.resolve(CityTimeViewModel.self)
         }
         defaultContainer.storyboardInitCompleted(ChooseCityViewController.self) { r, c in
-            c.chooseCityViewModel = r.resolve(ChooseCityViewModel.self)
+            c.viewModel = r.resolve(ChooseCityViewModel.self)
         }
     }
 }

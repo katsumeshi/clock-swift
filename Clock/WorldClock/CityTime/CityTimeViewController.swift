@@ -19,9 +19,9 @@ class CityTimeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.rx.setDelegate(self).disposed(by: bag)
-    
         let dataSource = CityTimeViewController.dataSource()
+        
+        tableView.rx.setDelegate(self).disposed(by: bag)
         
         tableView.rx.itemDeleted
             .subscribe(onNext: { [unowned self] indexPath in
@@ -50,12 +50,11 @@ class CityTimeViewController: UIViewController {
 
 extension CityTimeViewController: UITableViewDelegate {}
 
-
-extension CityTimeViewController {
+private extension CityTimeViewController {
     static func dataSource() -> RxTableViewSectionedAnimatedDataSource<CityTimeSection> {
         return RxTableViewSectionedAnimatedDataSource(
             configureCell: { _, table, idxPath, item in
-                let cell = table.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: idxPath)  as! CityTimeTableViewCell
+                let cell = table.dequeueReusableCell(withIdentifier: "CityTimeTableViewCell", for: idxPath)  as! CityTimeTableViewCell
                 cell.timeZone = item.zone
                 cell.timeUpdate(date: item.date, visible: !table.isEditing)
                 cell.updateCityName()

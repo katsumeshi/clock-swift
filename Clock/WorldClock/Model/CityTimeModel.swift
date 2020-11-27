@@ -11,14 +11,6 @@ import RxSwift
 import RxCocoa
 import SwiftDate
 
-enum SectionID: String, IdentifiableType {
-    case section1
-
-    var identity: String {
-        return self.rawValue
-    }
-}
-
 struct CityTimeSection {
     var cityTimes: [CityTime]
 }
@@ -56,13 +48,5 @@ struct CityTime: IdentifiableType, Equatable {
     
     static func ==(lhs: CityTime, rhs: CityTime) -> Bool {
         return lhs.identity == rhs.identity
-    }
-}
-
-extension Zones : IdentifiableType {
-    public typealias Identity = Zones
-
-    public var identity: Zones {
-        return self
     }
 }

@@ -163,8 +163,8 @@
 			isa = PBXGroup;
 			children = (
 				8116C3DB2560B4F9003D6706 /* CityTimeViewController.swift */,
-				8116C4132560C089003D6706 /* CityTimeTableViewCell.swift */,
 				8116C44625623DF4003D6706 /* CityTimeViewModel.swift */,
+				8116C4132560C089003D6706 /* CityTimeTableViewCell.swift */,
 			);
 			path = CityTime;
 			sourceTree = "<group>";
