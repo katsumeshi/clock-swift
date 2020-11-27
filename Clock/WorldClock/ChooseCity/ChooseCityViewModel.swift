@@ -13,8 +13,9 @@ import RxCocoa
 class ChooseCityViewModel {
     
     var dataStore: DataStore!
-    static let cityTimes = TimeZone.knownTimeZoneIdentifiers.map {
-        CityTime(zone: Zones(rawValue: $0) ?? Zones.gmt)
+    static let cityTimes: [CityTime] = TimeZone.knownTimeZoneIdentifiers.compactMap {
+        guard let zones = Zones(rawValue: $0) else { return nil }
+        return CityTime(zone: zones)
     }.sorted { $0.title < $1.title }
     
     static let titles = Array(Set(cityTimes.map {
@@ -39,5 +40,12 @@ class ChooseCityViewModel {
     
     func addCityTime(cityTime: CityTime) {
         dataStore.add(cityTime: cityTime)
+    }
+    
+    func search(query: String) {
+        let cities = ChooseCityViewModel.cityTimes.filter {
+            $0.title.hasPrefix(query)
+        }
+        _cityTimes.accept([CityTimeSection(header: "", cityTimes: cities)])
     }
 }
