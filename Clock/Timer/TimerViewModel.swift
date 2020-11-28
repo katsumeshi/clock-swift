@@ -11,7 +11,8 @@ import SwiftDate
 
 class TimerViewModel {
     
-    private let _timer = BehaviorRelay<String>(value: "00:00.00")
+    private let _lapTimers = BehaviorRelay<[(Date, Date)]>(value: [])
+    private let _timer = BehaviorRelay<Date>(value: Date.init(timeIntervalSince1970: 0))
     private var startTime: Double = 0
     private var duration: Double = 0
     private static let interval = 0.05
@@ -21,7 +22,7 @@ class TimerViewModel {
     private let _lapButton = BehaviorRelay<String>(value: "Lap")
     
     var timer: Observable<String> {
-        return _timer.asObservable()
+        return _timer.map{ $0.toTimerFormat() }.asObservable()
     }
     
     var startButton: Observable<String> {
@@ -32,12 +33,16 @@ class TimerViewModel {
         return _lapButton.asObservable()
     }
     
+    var lapTimers: Observable<[(Date, Date)]> {
+        return _lapTimers.asObservable()
+    }
+    
     init() {
         dispatchTimer.schedule(deadline: DispatchTime.now() + TimerViewModel.interval, repeating: TimerViewModel.interval)
         dispatchTimer.setEventHandler { [unowned self] in
             let time = Date().timeIntervalSinceReferenceDate - startTime + duration
             let date = Date.init(timeIntervalSinceReferenceDate: time)
-            _timer.accept(date.toFormat("mm:ss.SS"))
+            _timer.accept(date)
         }
     }
     
@@ -49,12 +54,12 @@ class TimerViewModel {
     }
     
     private func startTimer() {
-        startTime = Date().timeIntervalSinceReferenceDate
+        startTime = Date().timeIntervalSince1970
         dispatchTimer.resume()
     }
     
     private func stopTimer() {
-        duration += Date().timeIntervalSinceReferenceDate - startTime
+        duration += Date().timeIntervalSince1970 - startTime
         dispatchTimer.suspend()
     }
     
@@ -63,13 +68,21 @@ class TimerViewModel {
     }
     
     private func lapTimer() {
-        print("ppppp")
+        let current = _lapTimers.value.first?.1 ?? Date.init(timeIntervalSince1970: 0)
+        _lapTimers.accept([(current, _timer.value)] + _lapTimers.value)
     }
     
     private func restTimer() {
         duration = 0.0
         _lapButton.accept("Lap")
-        _timer.accept("00:00.00")
+        _timer.accept(Date.init(timeIntervalSince1970: 0))
+        _lapTimers.accept([])
     }
     
+}
+
+extension Date {
+    func toTimerFormat() -> String {
+        return self.toFormat("mm:ss.SS")
+    }
 }

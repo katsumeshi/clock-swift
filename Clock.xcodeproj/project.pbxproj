@@ -24,6 +24,7 @@
 		816F018B25662D1100079D6B /* ChooseCityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816F018A25662D1100079D6B /* ChooseCityTableViewCell.swift */; };
 		817FB05C2571AFF3008F12E9 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817FB05B2571AFF3008F12E9 /* TimerViewController.swift */; };
 		817FB0642571B000008F12E9 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817FB0632571B000008F12E9 /* TimerViewModel.swift */; };
+		817FB0692571D2A9008F12E9 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817FB0682571D2A9008F12E9 /* TimerModel.swift */; };
 		81ED1191257070A00029D024 /* CityTimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81ED1190257070A00029D024 /* CityTimeModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		816F018A25662D1100079D6B /* ChooseCityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCityTableViewCell.swift; sourceTree = "<group>"; };
 		817FB05B2571AFF3008F12E9 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		817FB0632571B000008F12E9 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
+		817FB0682571D2A9008F12E9 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 		81ED1190257070A00029D024 /* CityTimeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTimeModel.swift; sourceTree = "<group>"; };
 		E821F4760845600F6C8FD05B /* Pods_Clock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Clock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCCBBC7FFD60111C3C265177 /* Pods-Clock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clock.debug.xcconfig"; path = "Target Support Files/Pods-Clock/Pods-Clock.debug.xcconfig"; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			children = (
 				817FB05B2571AFF3008F12E9 /* TimerViewController.swift */,
 				817FB0632571B000008F12E9 /* TimerViewModel.swift */,
+				817FB0682571D2A9008F12E9 /* TimerModel.swift */,
 			);
 			path = Timer;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				8116C3DC2560B4F9003D6706 /* CityTimeViewController.swift in Sources */,
 				817FB0642571B000008F12E9 /* TimerViewModel.swift in Sources */,
 				8116C4142560C089003D6706 /* CityTimeTableViewCell.swift in Sources */,
+				817FB0692571D2A9008F12E9 /* TimerModel.swift in Sources */,
 				816F018625662CDB00079D6B /* ChooseCityViewModel.swift in Sources */,
 				8116C44725623DF4003D6706 /* CityTimeViewModel.swift in Sources */,
 				816F018B25662D1100079D6B /* ChooseCityTableViewCell.swift in Sources */,

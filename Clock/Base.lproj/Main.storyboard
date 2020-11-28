@@ -308,6 +308,16 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OOh-hh-Uq0">
                                 <rect key="frame" x="0.0" y="436" width="414" height="377"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimerTableViewCell" id="Lt8-Xp-NFv">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lt8-Xp-NFv" id="ES2-ZC-CBY">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hfp-kx-mtf">
                                 <rect key="frame" x="314" y="336" width="80" height="80"/>
@@ -364,6 +374,7 @@
                     <connections>
                         <outlet property="lap" destination="Jl3-HL-O72" id="7zJ-Pf-qOp"/>
                         <outlet property="start" destination="hfp-kx-mtf" id="v3h-1X-euz"/>
+                        <outlet property="tableView" destination="OOh-hh-Uq0" id="kMo-Ko-5dS"/>
                         <outlet property="timer" destination="pNj-sJ-5Zj" id="XQL-Ll-lny"/>
                     </connections>
                 </viewController>

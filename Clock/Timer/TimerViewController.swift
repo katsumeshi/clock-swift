@@ -14,6 +14,8 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var timer: UILabel!
     @IBOutlet weak var start: UIButton!
     @IBOutlet weak var lap: UIButton!
+    @IBOutlet weak var tableView: UITableView!
+    
     
     var viewModel: TimerViewModel = TimerViewModel()
     private let bag = DisposeBag()
@@ -39,6 +41,13 @@ class TimerViewController: UIViewController {
         
         viewModel.lapButton
             .bind(to: lap.rx.title())
+            .disposed(by: bag)
+        
+        viewModel.lapTimers
+            .bind(to: tableView.rx.items(cellIdentifier: "TimerTableViewCell")) { row, element, cell in
+                let time = element.1.timeIntervalSince1970 - element.0.timeIntervalSince1970
+                cell.textLabel?.text = Date.init(timeIntervalSince1970: time).toTimerFormat()
+            }
             .disposed(by: bag)
     }
 }
