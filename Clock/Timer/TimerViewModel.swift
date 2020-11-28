@@ -9,9 +9,15 @@ import RxSwift
 import RxCocoa
 import SwiftDate
 
+struct LapModel {
+    var prevTime: Date = Date.init(timeIntervalSince1970: 0)
+    var currentTime: Date = Date.init(timeIntervalSince1970: 0)
+    var count: Int = 0
+}
+
 class TimerViewModel {
     
-    private let _lapTimers = BehaviorRelay<[(Date, Date)]>(value: [])
+    private let _lapTimers = BehaviorRelay<[LapModel]>(value: [])
     private let _timer = BehaviorRelay<Date>(value: Date.init(timeIntervalSince1970: 0))
     private var startTime: Double = 0
     private var duration: Double = 0
@@ -33,7 +39,7 @@ class TimerViewModel {
         return _lapButton.asObservable()
     }
     
-    var lapTimers: Observable<[(Date, Date)]> {
+    var lapTimers: Observable<[LapModel]> {
         return _lapTimers.asObservable()
     }
     
@@ -68,8 +74,9 @@ class TimerViewModel {
     }
     
     private func lapTimer() {
-        let current = _lapTimers.value.first?.1 ?? Date.init(timeIntervalSince1970: 0)
-        _lapTimers.accept([(current, _timer.value)] + _lapTimers.value)
+        let current = _lapTimers.value.first?.currentTime ?? Date.init(timeIntervalSince1970: 0)
+        let lap = LapModel(prevTime: current, currentTime: _timer.value,  count: _lapTimers.value.count)
+        _lapTimers.accept([lap] + _lapTimers.value)
     }
     
     private func restTimer() {

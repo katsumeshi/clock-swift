@@ -44,9 +44,10 @@ class TimerViewController: UIViewController {
             .disposed(by: bag)
         
         viewModel.lapTimers
-            .bind(to: tableView.rx.items(cellIdentifier: "TimerTableViewCell")) { row, element, cell in
-                let time = element.1.timeIntervalSince1970 - element.0.timeIntervalSince1970
-                cell.textLabel?.text = Date.init(timeIntervalSince1970: time).toTimerFormat()
+            .bind(to: tableView.rx.items(cellIdentifier: "TimerTableViewCell", cellType: TimerTableViewCell.self)) { row, element, cell in
+                let time = element.currentTime.timeIntervalSince1970 - element.prevTime.timeIntervalSince1970
+                cell.title.text = "Lap \(element.count)"
+                cell.lap.text = Date.init(timeIntervalSince1970: time).toTimerFormat()
             }
             .disposed(by: bag)
     }

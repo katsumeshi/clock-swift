@@ -309,13 +309,37 @@
                                 <rect key="frame" x="0.0" y="436" width="414" height="377"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimerTableViewCell" id="Lt8-Xp-NFv">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimerTableViewCell" id="Lt8-Xp-NFv" customClass="TimerTableViewCell" customModule="Clock" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lt8-Xp-NFv" id="ES2-ZC-CBY">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DuJ-Ir-hv9">
+                                                    <rect key="frame" x="282" y="12" width="112" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fBY-CH-LxL">
+                                                    <rect key="frame" x="20" y="11.5" width="41.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="fBY-CH-LxL" firstAttribute="leading" secondItem="ES2-ZC-CBY" secondAttribute="leadingMargin" id="25s-Xx-ZhX"/>
+                                                <constraint firstItem="DuJ-Ir-hv9" firstAttribute="centerY" secondItem="ES2-ZC-CBY" secondAttribute="centerY" id="ZOK-tv-q4p"/>
+                                                <constraint firstItem="fBY-CH-LxL" firstAttribute="centerY" secondItem="ES2-ZC-CBY" secondAttribute="centerY" id="i5d-Yy-Osb"/>
+                                                <constraint firstItem="DuJ-Ir-hv9" firstAttribute="trailing" secondItem="ES2-ZC-CBY" secondAttribute="trailingMargin" id="qwh-z9-AcJ"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lap" destination="DuJ-Ir-hv9" id="hrB-ng-kWq"/>
+                                            <outlet property="title" destination="fBY-CH-LxL" id="4rc-L5-8Rn"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
