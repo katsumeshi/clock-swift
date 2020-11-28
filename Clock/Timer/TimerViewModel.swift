@@ -17,9 +17,19 @@ class TimerViewModel {
     private static let interval = 0.05
     private let dispatchTimer = DispatchSource.makeTimerSource(queue: DispatchQueue.global())
     private var isStarting = false
+    private let _startButton = BehaviorRelay<String>(value: "Start")
+    private let _lapButton = BehaviorRelay<String>(value: "Lap")
     
     var timer: Observable<String> {
         return _timer.asObservable()
+    }
+    
+    var startButton: Observable<String> {
+        return _startButton.asObservable()
+    }
+    
+    var lapButton: Observable<String> {
+        return _lapButton.asObservable()
     }
     
     init() {
@@ -31,12 +41,10 @@ class TimerViewModel {
         }
     }
     
-    func toggleTimer() {
-        if isStarting {
-            stopTimer()
-        } else {
-            startTimer()
-        }
+    func toggleStartStop() {
+        isStarting ? stopTimer() : startTimer()
+        _startButton.accept(isStarting ? "Start" : "Stop")
+        _lapButton.accept(isStarting ? "Reset" : "Lap")
         isStarting = !isStarting
     }
     
@@ -48,6 +56,20 @@ class TimerViewModel {
     private func stopTimer() {
         duration += Date().timeIntervalSinceReferenceDate - startTime
         dispatchTimer.suspend()
+    }
+    
+    func toggleLapReset() {
+        isStarting ? lapTimer() : restTimer()
+    }
+    
+    private func lapTimer() {
+        print("ppppp")
+    }
+    
+    private func restTimer() {
+        duration = 0.0
+        _lapButton.accept("Lap")
+        _timer.accept("00:00.00")
     }
     
 }

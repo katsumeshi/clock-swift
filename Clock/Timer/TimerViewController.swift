@@ -20,12 +20,25 @@ class TimerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         start.rx.tap.subscribe({ [unowned self] _ in
-            viewModel.toggleTimer()
+            viewModel.toggleStartStop()
+        }).disposed(by: bag)
+        
+        lap.rx.tap.subscribe({ [unowned self] _ in
+            viewModel.toggleLapReset()
         }).disposed(by: bag)
         
         viewModel.timer
             .bind(to: timer.rx.text)
+            .disposed(by: bag)
+        
+        viewModel.startButton
+            .bind(to: start.rx.title())
+            .disposed(by: bag)
+        
+        viewModel.lapButton
+            .bind(to: lap.rx.title())
             .disposed(by: bag)
     }
 }
