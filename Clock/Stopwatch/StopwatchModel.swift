@@ -11,36 +11,36 @@ import RxSwift
 import RxCocoa
 import SwiftDate
 
-struct TimerSection {
-    var timers: [Timer]
+struct StopwatchSection {
+    var timers: [Stopwatch]
 }
 
-extension TimerSection: AnimatableSectionModelType {
+extension StopwatchSection: AnimatableSectionModelType {
     
-    typealias Item = Timer
+    typealias Item = Stopwatch
 
     var identity: String {
         return ""
     }
     
-    var items: [Timer] {
+    var items: [Stopwatch] {
         return timers
     }
 
-    init(original: TimerSection, items: [Item]) {
+    init(original: StopwatchSection, items: [Item]) {
         self = original
         self.timers = items
     }
 }
 
-struct Timer: IdentifiableType, Equatable {
+struct Stopwatch: IdentifiableType, Equatable {
     
     var date: Date = Date();
     var identity: Date {
         return date
     }
     
-    static func ==(lhs: Timer, rhs: Timer) -> Bool {
+    static func ==(lhs: Stopwatch, rhs: Stopwatch) -> Bool {
         return lhs.identity == rhs.identity
     }
 }

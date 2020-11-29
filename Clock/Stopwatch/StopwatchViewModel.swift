@@ -2,32 +2,33 @@
 //  TimerViewModel.swift
 //  Clock
 //
-//  Created by katsumeshi on 2020-11-29.
+//  Created by katsumeshi on 2020-11-27.
 //
 
 import RxSwift
 import RxCocoa
 import SwiftDate
 
-enum TimerState {
-    case start, pause, stop
+struct LapModel {
+    var prevTime: Date = Date.init(timeIntervalSince1970: 0)
+    var currentTime: Date = Date.init(timeIntervalSince1970: 0)
+    var count: Int = 0
 }
 
-class TimerViewModel {
+class StopwatchViewModel {
     
     private let _lapTimers = BehaviorRelay<[LapModel]>(value: [])
     private let _timer = BehaviorRelay<Date>(value: Date.init(timeIntervalSince1970: 0))
     private var startTime: Double = 0
     private var duration: Double = 0
-    private static let interval = 1.0
+    private static let interval = 0.05
     private let dispatchTimer = DispatchSource.makeTimerSource(queue: DispatchQueue.global())
-//    private var isStarting = false
+    private var isStarting = false
     private let _startButton = BehaviorRelay<String>(value: "Start")
     private let _lapButton = BehaviorRelay<String>(value: "Lap")
-    private let _timeState = BehaviorRelay<TimerState>(value: .stop)
     
     var timer: Observable<String> {
-        return _timer.map{ $0.toTimerFormat() }.asObservable()
+        return _timer.map{ $0.toStopwatchFormat() }.asObservable()
     }
     
     var startButton: Observable<String> {
@@ -42,16 +43,8 @@ class TimerViewModel {
         return _lapTimers.asObservable()
     }
     
-    var isTimerHidden: Observable<Bool> {
-        return _timeState.map { $0 == .stop }
-    }
-    
-    var isPickerHidden: Observable<Bool> {
-        return _timeState.map { $0 != .stop }
-    }
-    
     init() {
-        dispatchTimer.schedule(deadline: DispatchTime.now() + TimerViewModel.interval, repeating: TimerViewModel.interval)
+        dispatchTimer.schedule(deadline: DispatchTime.now() + StopwatchViewModel.interval, repeating: StopwatchViewModel.interval)
         dispatchTimer.setEventHandler { [unowned self] in
             let time = Date().timeIntervalSinceReferenceDate - startTime + duration
             let date = Date.init(timeIntervalSinceReferenceDate: time)
@@ -59,37 +52,25 @@ class TimerViewModel {
         }
     }
     
-    func toggleStartPause() {
-        _timeState.value == .stop ? pauseTimer() : startTimer()
-//        _isStarting.value ? stopTimer() : startTimer()
-//        _startButton.accept(_isStarting.value ? "Start" : "Pause")
-//        _isStarting.accept(!_isStarting.value)
-    }
-    
-    func cancel() {
-        stopTimer()
+    func toggleStartStop() {
+        isStarting ? stopTimer() : startTimer()
+        _startButton.accept(isStarting ? "Start" : "Stop")
+        _lapButton.accept(isStarting ? "Reset" : "Lap")
+        isStarting = !isStarting
     }
     
     private func startTimer() {
-        _timeState.accept(.start)
-//        startTime = Date().timeIntervalSince1970
-//        dispatchTimer.resume()
-    }
-    
-    private func pauseTimer() {
-        _timeState.accept(.pause)
-//        duration += Date().timeIntervalSince1970 - startTime
-//        dispatchTimer.suspend()
+        startTime = Date().timeIntervalSince1970
+        dispatchTimer.resume()
     }
     
     private func stopTimer() {
-        _timeState.accept(.stop)
-//        duration += Date().timeIntervalSince1970 - startTime
-//        dispatchTimer.suspend()
+        duration += Date().timeIntervalSince1970 - startTime
+        dispatchTimer.suspend()
     }
     
     func toggleLapReset() {
-//        _isStarting.value ? lapTimer() : restTimer()
+        isStarting ? lapTimer() : restTimer()
     }
     
     private func lapTimer() {
@@ -105,4 +86,14 @@ class TimerViewModel {
         _lapTimers.accept([])
     }
     
+}
+
+extension Date {
+    func toStopwatchFormat() -> String {
+        return self.toFormat("mm:ss.SS")
+    }
+    
+    func toTimerFormat() -> String {
+        return self.toFormat("HH:mm:ss")
+    }
 }
