@@ -25,13 +25,13 @@ class CityTimeViewController: UIViewController {
         
         tableView.rx.itemDeleted
             .subscribe(onNext: { [unowned self] indexPath in
-                self.viewModel.remove(indexPath: indexPath)
+                viewModel.remove(indexPath: indexPath)
             })
             .disposed(by: bag)
         
         tableView.rx.itemMoved.subscribe({ [unowned self] item in
             guard let ele = item.element else { return }
-            self.viewModel.move(sourceIndex: ele.sourceIndex, destinationIndex: ele.destinationIndex)
+            viewModel.move(sourceIndex: ele.sourceIndex, destinationIndex: ele.destinationIndex)
         })
         .disposed(by: bag)
         

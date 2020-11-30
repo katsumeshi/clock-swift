@@ -28,6 +28,10 @@
 		817FB06E25721812008F12E9 /* StopwatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817FB06D25721812008F12E9 /* StopwatchTableViewCell.swift */; };
 		81E1A50A257336A8006BC993 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E1A509257336A8006BC993 /* TimerViewController.swift */; };
 		81E1A50F25745857006BC993 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E1A50E25745857006BC993 /* TimerViewModel.swift */; };
+		81E1A5152574B735006BC993 /* AlarmTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E1A5142574B735006BC993 /* AlarmTableViewController.swift */; };
+		81E1A51D2574B745006BC993 /* AlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E1A51C2574B745006BC993 /* AlarmViewModel.swift */; };
+		81E1A5282574C3EC006BC993 /* AlarmModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E1A5272574C3EC006BC993 /* AlarmModal.swift */; };
+		81E1A52D2574C9D8006BC993 /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E1A52C2574C9D8006BC993 /* AlarmTableViewCell.swift */; };
 		81ED1191257070A00029D024 /* CityTimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81ED1190257070A00029D024 /* CityTimeModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +79,10 @@
 		817FB06D25721812008F12E9 /* StopwatchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchTableViewCell.swift; sourceTree = "<group>"; };
 		81E1A509257336A8006BC993 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		81E1A50E25745857006BC993 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
+		81E1A5142574B735006BC993 /* AlarmTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewController.swift; sourceTree = "<group>"; };
+		81E1A51C2574B745006BC993 /* AlarmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewModel.swift; sourceTree = "<group>"; };
+		81E1A5272574C3EC006BC993 /* AlarmModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmModal.swift; sourceTree = "<group>"; };
+		81E1A52C2574C9D8006BC993 /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewCell.swift; sourceTree = "<group>"; };
 		81ED1190257070A00029D024 /* CityTimeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTimeModel.swift; sourceTree = "<group>"; };
 		E821F4760845600F6C8FD05B /* Pods_Clock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Clock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCCBBC7FFD60111C3C265177 /* Pods-Clock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clock.debug.xcconfig"; path = "Target Support Files/Pods-Clock/Pods-Clock.debug.xcconfig"; sourceTree = "<group>"; };
@@ -141,6 +149,7 @@
 		8116C3D62560B4F9003D6706 /* Clock */ = {
 			isa = PBXGroup;
 			children = (
+				81E1A5132574B704006BC993 /* Alarm */,
 				81E1A4F625733586006BC993 /* Timer */,
 				817FB05A2571AFC7008F12E9 /* Stopwatch */,
 				8138FD4425706C4D004F9279 /* WorldClock */,
@@ -229,6 +238,17 @@
 				81E1A50E25745857006BC993 /* TimerViewModel.swift */,
 			);
 			path = Timer;
+			sourceTree = "<group>";
+		};
+		81E1A5132574B704006BC993 /* Alarm */ = {
+			isa = PBXGroup;
+			children = (
+				81E1A5142574B735006BC993 /* AlarmTableViewController.swift */,
+				81E1A51C2574B745006BC993 /* AlarmViewModel.swift */,
+				81E1A5272574C3EC006BC993 /* AlarmModal.swift */,
+				81E1A52C2574C9D8006BC993 /* AlarmTableViewCell.swift */,
+			);
+			path = Alarm;
 			sourceTree = "<group>";
 		};
 		81ED11952570717E0029D024 /* Model */ = {
@@ -421,9 +441,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81E1A5282574C3EC006BC993 /* AlarmModal.swift in Sources */,
 				816F018125662BD600079D6B /* ChooseCityViewController.swift in Sources */,
+				81E1A5152574B735006BC993 /* AlarmTableViewController.swift in Sources */,
 				81ED1191257070A00029D024 /* CityTimeModel.swift in Sources */,
 				811778FC256B532000352CBF /* DataStore.swift in Sources */,
+				81E1A51D2574B745006BC993 /* AlarmViewModel.swift in Sources */,
 				8116C3DC2560B4F9003D6706 /* CityTimeViewController.swift in Sources */,
 				817FB0642571B000008F12E9 /* StopwatchViewModel.swift in Sources */,
 				8116C4142560C089003D6706 /* CityTimeTableViewCell.swift in Sources */,
@@ -433,6 +456,7 @@
 				816F018B25662D1100079D6B /* ChooseCityTableViewCell.swift in Sources */,
 				81E1A50A257336A8006BC993 /* TimerViewController.swift in Sources */,
 				8116C3D82560B4F9003D6706 /* AppDelegate.swift in Sources */,
+				81E1A52D2574C9D8006BC993 /* AlarmTableViewCell.swift in Sources */,
 				81E1A50F25745857006BC993 /* TimerViewModel.swift in Sources */,
 				817FB06E25721812008F12E9 /* StopwatchTableViewCell.swift in Sources */,
 				817FB05C2571AFF3008F12E9 /* StopwatchViewController.swift in Sources */,

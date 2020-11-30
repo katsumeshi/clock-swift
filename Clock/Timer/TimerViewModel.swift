@@ -53,9 +53,6 @@ class TimerViewModel {
     
     func toggleStartPause() {
         _timeState.value == .start ? pauseTimer() : startTimer()
-//        _isStarting.value ? stopTimer() : startTimer()
-//        _startButton.accept(_isStarting.value ? "Start" : "Pause")
-//        _isStarting.accept(!_isStarting.value)
     }
     
     func updateTimer(hours: Int, min: Int, sec:Int ) {

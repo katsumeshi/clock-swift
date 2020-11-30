@@ -19,11 +19,17 @@ extension SwinjectStoryboard {
         defaultContainer.register(CityTimeViewModel.self) { r in
             CityTimeViewModel(dataStore: r.resolve(DataStore.self)!)
         }
+        defaultContainer.register(AlarmViewModel.self) { r in
+            AlarmViewModel(dataStore: r.resolve(DataStore.self)!)
+        }
         defaultContainer.storyboardInitCompleted(CityTimeViewController.self) { r, c in
             c.viewModel = r.resolve(CityTimeViewModel.self)
         }
         defaultContainer.storyboardInitCompleted(ChooseCityViewController.self) { r, c in
             c.viewModel = r.resolve(ChooseCityViewModel.self)
+        }
+        defaultContainer.storyboardInitCompleted(AlarmTableViewController.self) { r, c in
+            c.viewModel = r.resolve(AlarmViewModel.self)
         }
     }
 }
