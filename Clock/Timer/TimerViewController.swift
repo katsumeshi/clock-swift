@@ -29,6 +29,12 @@ class TimerViewController: UIViewController {
         
         _ = items.bind(to: pickerView.rx.items(adapter: PickerViewViewAdapter()))
         
+        pickerView.rx.modelSelected(Int.self)
+            .subscribe { [unowned self] model in
+                viewModel.updateTimer(hours: model[0], min: model[2], sec: model[4])
+            }.disposed(by: bag)
+
+        
         startPauseButton.rx.tap.subscribe { [unowned self] _ in
             viewModel.toggleStartPause()
         }.disposed(by: bag)
@@ -40,6 +46,11 @@ class TimerViewController: UIViewController {
         viewModel.isTimerHidden
             .bind(to: timerView.rx.isHidden)
             .disposed(by: bag)
+        
+        viewModel.startPauseButtonTitle
+            .bind(to: startPauseButton.rx.title())
+            .disposed(by: bag)
+        
         
         viewModel.isPickerHidden
             .bind(to: pickerView.rx.isHidden)
@@ -62,7 +73,28 @@ final class PickerViewViewAdapter
     private var items: [[Int]] = []
 
     func model(at indexPath: IndexPath) throws -> Any {
-        items[indexPath.section][indexPath.row]
+//        items[indexPath.section][indexPath.row]
+        
+        switch (indexPath.section) {
+            case 0:
+//                label.text = items[0][row].description
+                return items[0][indexPath.row]
+//            case 1:
+//                label.text = "hours"
+            case 2:
+//                label.text = items[1][row].description
+                return items[1][indexPath.row]
+//            case 3:
+//                label.text = "min"
+            case 4:
+//                label.text = items[2][row].description
+                return items[2][indexPath.row]
+//            case 5:
+//                label.text = "sec"
+            default:
+                break
+        }
+        return 0
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

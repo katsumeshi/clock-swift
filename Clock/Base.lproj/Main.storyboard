@@ -290,10 +290,7 @@
                                 <rect key="frame" x="0.0" y="173" width="414" height="216"/>
                             </pickerView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z62-pz-rX6">
-                                <rect key="frame" x="51" y="235" width="312" height="92"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="Fmk-Rp-jgA"/>
-                                </constraints>
+                                <rect key="frame" x="51" y="204" width="312" height="92"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="80"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -309,8 +306,7 @@
                             <constraint firstItem="NCc-Ih-ltw" firstAttribute="leading" secondItem="Wto-fe-DFb" secondAttribute="leading" id="X6W-FX-wvY"/>
                             <constraint firstItem="Wto-fe-DFb" firstAttribute="trailing" secondItem="hvf-nR-c8M" secondAttribute="trailing" constant="20" id="Xns-Wo-fbf"/>
                             <constraint firstItem="z62-pz-rX6" firstAttribute="centerX" secondItem="hpW-Ws-at0" secondAttribute="centerX" id="cm9-0S-AMc"/>
-                            <constraint firstItem="z62-pz-rX6" firstAttribute="top" secondItem="Wto-fe-DFb" secondAttribute="top" constant="191" id="gck-KM-UNY"/>
-                            <constraint firstItem="hvf-nR-c8M" firstAttribute="top" secondItem="z62-pz-rX6" secondAttribute="bottom" constant="177" id="sYZ-IQ-JfZ"/>
+                            <constraint firstItem="z62-pz-rX6" firstAttribute="top" secondItem="Wto-fe-DFb" secondAttribute="top" constant="160" id="gck-KM-UNY"/>
                             <constraint firstItem="hvf-nR-c8M" firstAttribute="top" secondItem="NCc-Ih-ltw" secondAttribute="bottom" constant="115" id="skX-tU-yhO"/>
                             <constraint firstItem="CLa-EK-Kxw" firstAttribute="leading" secondItem="Wto-fe-DFb" secondAttribute="leading" constant="20" id="zjG-11-EAK"/>
                         </constraints>
@@ -343,10 +339,10 @@
             </objects>
             <point key="canvasLocation" x="-1246" y="1644"/>
         </scene>
-        <!--Timer View Controller-->
+        <!--Stopwatch View Controller-->
         <scene sceneID="f80-5X-3rB">
             <objects>
-                <viewController id="3iJ-kB-jyK" customClass="TimerViewController" customModule="Clock" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="3iJ-kB-jyK" customClass="StopwatchViewController" customModule="Clock" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Yja-ZT-xXC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -448,7 +444,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="66Z-nL-GJv"/>
                     <connections>
-                        <outlet property="lap" destination="Jl3-HL-O72" id="7zJ-Pf-qOp"/>
+                        <outlet property="lap" destination="Jl3-HL-O72" id="xDJ-iT-m96"/>
                         <outlet property="start" destination="hfp-kx-mtf" id="v3h-1X-euz"/>
                         <outlet property="tableView" destination="OOh-hh-Uq0" id="kMo-Ko-5dS"/>
                         <outlet property="timer" destination="pNj-sJ-5Zj" id="XQL-Ll-lny"/>
